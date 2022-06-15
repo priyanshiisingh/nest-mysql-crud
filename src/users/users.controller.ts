@@ -1,3 +1,4 @@
+// import { User } from './users.dto';
 import {
   Controller,
   Post,
@@ -14,23 +15,46 @@ import { User } from './user.entity';
 export class UsersController {
   constructor(private service: UsersService) {}
 
+  @Get()
+  async getUsers() {
+    const users = await this.service.getUsers();
+    return {
+      message: 'Users fetched successfully',
+      users,
+    };
+  }
+
   @Get(':id')
-  get(@Param() params) {
-    return this.service.getUser(params.id);
+  async getUser(@Param('id') id: number) {
+    const data = await this.service.getUser(id);
+    return {
+      message: 'User fetched successfully',
+      data,
+    };
   }
 
   @Post()
-  create(@Body() user: User) {
-    return this.service.createUser(user);
+  async createUser(@Body() user: User) {
+    const createduser = await this.service.createUser(user);
+    return {
+      message: 'User created successfully',
+      createduser,
+    };
   }
 
-  @Put()
-  update(@Body() user: User) {
-    return this.service.updateUser(user);
+  @Put('id')
+  async updateUser(@Param('id') id: number, @Body() user: User) {
+    await this.service.updateUser(id, user);
+    return {
+      message: 'User updated successfully',
+    };
   }
 
   @Delete(':id')
-  deleteUser(@Param() params) {
-    return this.service.deleteUser(params.id);
+  async deleteUser(@Param('id') id: number) {
+    await this.service.deleteUser(id);
+    return {
+      message: 'User deleted successfully',
+    };
   }
 }

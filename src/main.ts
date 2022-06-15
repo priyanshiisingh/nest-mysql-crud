@@ -7,9 +7,6 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Nest API')
-    .setDescription(
-      'This is a crash course for understanding conventions of nest api.',
-    )
     .setVersion('1.0')
     .build();
 
