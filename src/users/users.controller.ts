@@ -42,7 +42,7 @@ export class UsersController {
     };
   }
 
-  @Put('id')
+  @Put(':id')
   async updateUser(@Param('id') id: number, @Body() user: User) {
     await this.service.updateUser(id, user);
     return {
