@@ -5,12 +5,12 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 25 })
+  @Column({ length: 25, default: null })
   fullName: string;
 
-  @Column('date')
+  @Column('date', { default: null })
   birthday: Date;
 
-  @Column()
+  @Column({ default: null })
   isActive: boolean;
 }
