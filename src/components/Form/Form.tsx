@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "../styles/Form.css";
 import axios from "axios";
+import FormTable from "../FormTable/FormTable";
 
 function Form() {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
+  const [checked, setChecked] = useState(false);
 
   const handleId = (e: any) => {
     setId(e.target.value);
@@ -17,9 +19,9 @@ function Form() {
   const handleDate = (e: any) => {
     setDate(e.target.value);
   };
-  //   const handleCheck = (e: any) => {
-  //     setChecked(e.target.checked);
-  //   };
+  const handleCheck = (e: any) => {
+    setChecked(e.target.checked);
+  };
 
   const UserDetails = async (e: any) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ function Form() {
         id: id,
         fullName: name,
         birthday: date,
-        //   isActive: checked,
+        isActive: checked,
       })
       .then(function (response) {
         console.log(response);
@@ -82,7 +84,7 @@ function Form() {
           />
         </div>
 
-        {/* <div className="form-group form-check mb-3">
+        <div className="form-group form-check mb-3">
           <input
             type="checkbox"
             className="form-check-input"
@@ -93,10 +95,13 @@ function Form() {
           <label className="form-check-label" htmlFor="inputActive">
             is Active ?
           </label>
-        </div> */}
+        </div>
+
         <button type="submit" className="btn btn-primary" onClick={UserDetails}>
           Submit
         </button>
+        <br />
+        <FormTable />
       </form>
     </div>
   );
