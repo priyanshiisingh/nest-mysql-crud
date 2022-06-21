@@ -21,7 +21,6 @@ function FormTable() {
           <th scope="col">id</th>
           <th scope="col">FullName</th>
           <th scope="col">Birthday</th>
-          <th scope="col">isActive</th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +30,6 @@ function FormTable() {
               <td>{user.id}</td>
               <td>{user.fullName}</td>
               <td>{user.birthday}</td>
-              <td>{user.isActive}</td>
             </tr>
           );
         })}
