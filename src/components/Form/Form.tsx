@@ -9,6 +9,7 @@ function Form() {
 
   const handleId = (e: any) => {
     setId(e.target.value);
+    console.log(id);
   };
   const handleName = (e: any) => {
     setName(e.target.value);
@@ -24,16 +25,10 @@ function Form() {
     e.preventDefault();
     await axios
       .post("http://localhost:8000/users", {
-        headers: {
-          Accept: "application/json, text/plain, /",
-          "Content-Type": "multipart/form-data",
-        },
-        data: {
-          id: id,
-          fullName: name,
-          birthday: date,
-          //   isActive: checked,
-        },
+        id: id,
+        fullName: name,
+        birthday: date,
+        //   isActive: checked,
       })
       .then(function (response) {
         console.log(response);
@@ -67,7 +62,7 @@ function Form() {
             className="form-control"
             id="inputName"
             name="name"
-            defaultValue={name}
+            value={name}
             onChange={handleName}
             aria-describedby="nameHelp"
             placeholder="Enter Name"
